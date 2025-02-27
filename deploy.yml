@@ -36,13 +36,13 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 cp application.zip s3://$S3_BUCKET_NAME/$S3_KEY
+          aws s3 cp application.zip s3://$lks-kudus-apeng-25/$S3_KEY
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIONENB3NVIZIGU }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.N9/nkm1nJiIwIIatyoJ98dXROwJA9Ay/ZBF7z66H }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWSEBDBPassword }}
+          AWS_REGION: ${{ secrets.us-west-1 }}
+          S3_BUCKET_NAME: ${{ secrets.lks-kudus-apeng-25 }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
   deploy:
@@ -53,22 +53,22 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           aws elasticbeanstalk create-application-version \
-            --application-name ${{ secrets.EB_APP_NAME }} \
+            --application-name ${{ secrets.lks-eb-apps-apeng }} \
             --version-label $GITHUB_SHA \
-            --source-bundle S3Bucket=$S3_BUCKET_NAME,S3Key=$S3_KEY \
-            --region $AWS_REGION
+            --source-bundle S3Bucket=$lks-kudus-apeng-25,S3Key=$S3_KEY \
+            --region $us-west-1
 
           aws elasticbeanstalk update-environment \
-            --environment-name ${{ secrets.EB_ENV_NAME }} \
+            --environment-name ${{ secret.Lks-eb-apps-env }} \
             --version-label $GITHUB_SHA
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIONENB3NVIZIGU }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.N9/nkm1nJiIwIIatyoJ98dXROwJA9Ay/ZBF7z66H }}
+          AWS_REGION: ${{ secrets.us-west-1 }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWSEBDBPassword }}
           
-          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+          S3_BUCKET_NAME: ${{ secrets.lks-kudus-apeng-25 }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
-          EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
-          EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
+          EB_ENV_NAME: ${{ secrets.Lks-eb-apps-env }}
+          EB_APP_NAME: ${{ secrets.lks-eb-apps-apeng }}
