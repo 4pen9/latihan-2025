@@ -38,8 +38,8 @@ jobs:
         run: |
           aws s3 cp application.zip s3://$lks-kudus-apeng-25/$S3_KEY
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIONENB3NVIZIGU }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.N9/nkm1nJiIwIIatyoJ98dXROwJA9Ay/ZBF7z66H }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWSEBDBPassword }}
           AWS_REGION: ${{ secrets.us-west-1 }}
           S3_BUCKET_NAME: ${{ secrets.lks-kudus-apeng-25 }}
@@ -62,8 +62,8 @@ jobs:
             --environment-name ${{ secrets.Lks-eb-apps-env }} \
             --version-label $GITHUB_SHA
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AKIA2ZIONENB3NVIZIGU }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.N9/nkm1nJiIwIIatyoJ98dXROwJA9Ay/ZBF7z66H }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.us-west-1 }}
           AWS_SESSION_TOKEN: ${{ secrets.AWSEBDBPassword }}
           
