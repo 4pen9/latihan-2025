@@ -42,7 +42,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWSEBDBPassword }}
           AWS_REGION: ${{ secrets.us-west-1 }}
-          S3_BUCKET_NAME: ${{ secrets.lks-dokerimage-apeng-25 }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
   deploy:
