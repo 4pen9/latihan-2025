@@ -36,12 +36,12 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 cp application.zip s3://$S3_BUCKET_NAME/$S3_KEY
+          aws s3 cp application.zip s3://$S3_BUCKET_NAME/$AWS_REGION/$S3_KEY
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
-          AWS_REGION: ${{ secrets.us-west-1 }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
