@@ -21,7 +21,7 @@ s3_client = boto3.client(
     aws_access_key_id=AWS_ACCESS_KEY_ID,
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     aws_session_token=AWS_SESSION_TOKEN,
-    region_name=AWS_REGION,
+    region_name=us-west-1,
 )
 
 @app.route("/")
