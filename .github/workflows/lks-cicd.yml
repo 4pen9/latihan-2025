@@ -55,7 +55,7 @@ jobs:
           aws elasticbeanstalk create-application-version \
             --application-name ${{ secrets.lks-eb-apps-apeng }} \
             --version-label $GITHUB_SHA \
-            --source-bundle S3Bucket=$lks-kudus-apeng-25,S3Key=$S3_KEY \
+            --source-bundle S3Bucket=$S3_BUCKET_NAME,S3Key=$S3_KEY \
             --region $AWS_REGION
 
           aws elasticbeanstalk update-environment \
@@ -67,7 +67,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
           
-          S3_BUCKET_NAME: ${{ secrets.lks-kudus-apeng-25 }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
           EB_ENV_NAME: ${{ secrets.Lks-eb-apps-env }}
