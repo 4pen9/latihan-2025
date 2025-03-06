@@ -53,13 +53,13 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           aws elasticbeanstalk create-application-version \
-            --application-name ${{ secrets.lks-eb-apps-apeng }} \
+            --application-name ${{ secrets.EB_APP_NAME }} \
             --version-label $GITHUB_SHA \
             --source-bundle S3Bucket=lks-dockerimage-apeng-25,S3Key=$S3_KEY \
             --region us-west-1
 
           aws elasticbeanstalk update-environment \
-            --environment-name ${{ secrets.Lks-eb-apps-env }} \
+            --environment-name ${{ secrets.EB_ENV_NAME }} \
             --version-label $GITHUB_SHA
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -70,5 +70,5 @@ jobs:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_KEY: "deployments/application-${{ github.sha }}.zip"
 
-          EB_ENV_NAME: ${{ secrets.Lks-eb-apps-env }}
-          EB_APP_NAME: ${{ secrets.lks-eb-apps-apeng }}
+          EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
+          EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
