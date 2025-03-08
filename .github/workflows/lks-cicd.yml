@@ -36,7 +36,7 @@ jobs:
 
       - name: Upload to S3
         run: |
-          aws s3 cp application.zip s3://lks-dockerimage-apeng-25/$S3_KEY
+          aws s3 cp application.zip s3://lks-dokerimage-apeng-25/$S3_KEY
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -54,7 +54,7 @@ jobs:
           aws elasticbeanstalk create-application-version \
             --application-name ${{ secrets.EB_APP_NAME }} \
             --version-label $GITHUB_SHA \
-            --source-bundle S3Bucket=lks-dockerimage-apeng-25,S3Key=$S3_KEY \
+            --source-bundle S3Bucket=lks-dokerimage-apeng-25,S3Key=$S3_KEY \
             --region us-west-1
 
           aws elasticbeanstalk update-environment \
