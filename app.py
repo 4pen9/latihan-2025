@@ -9,12 +9,12 @@ load_dotenv()
 app = Flask(__name__)
 
 # Konfigurasi AWS
-AWS_ACCESS_KEY_ID = os.getenv("AKIA2ZIONENB3NVIZIGU")
-AWS_SECRET_ACCESS_KEY = os.getenv("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")
-AWS_SESSION_TOKEN = os.getenv("AWSEBDBPassword")
-AWS_REGION = os.getenv("us-west-1")
-S3_BUCKET = os.getenv("lks-dockerimage-apeng-25")
-API_URL = os.getenv("API_URL", "https://4y5ygjnmpb.execute-api.us-west-1.amazonaws.com/production/users")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_KEY_ID")
+AWS_SESSION_TOKEN = os.getenv("AWS_SESSION_TOKEN")
+AWS_REGION = os.getenv("AWS_REGION")
+S3_BUCKET = os.getenv("S3_BUCKET_NAME")
+API_URL = os.getenv("API_GATEWAY_URL")
 
 s3_client = boto3.client(
     "s3",
@@ -102,4 +102,4 @@ def update_user(user_id):
         return jsonify({"error": "Failed to update user"}), response.status_code
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
