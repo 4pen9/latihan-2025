@@ -32,11 +32,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Zip application for deployment
-        run: zip -r application.tar . -x '*.git*'
+        run: zip -r application-lkss.zip . -x '*.git*'
 
       - name: Upload to S3
         run: |
-          aws s3 cp application.tar s3://lks-dockerimage-apeng-25/$S3_KEY
+          aws s3 cp application-lkss.zip s3://lks-dockerimage-apeng-25/$S3_KEY
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
