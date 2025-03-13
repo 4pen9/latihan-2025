@@ -54,7 +54,7 @@ jobs:
           aws elasticbeanstalk create-application-version \
             --application-name ${{ secrets.EB_APP_NAME }} \
             --version-label $GITHUB_SHA \
-            --source-bundle S3Bucket=lks-dokerimage-apeng-25,S3Key=$S3_KEY \
+            --source-bundle S3Bucket=lks-dockerimage-apeng-25,S3Key=$S3_KEY \
             --region us-west-1
 
           aws elasticbeanstalk update-environment \
